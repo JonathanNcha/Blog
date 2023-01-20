@@ -60,7 +60,7 @@ async function isLoggedOut(req,res,next) {
   const articles = await Article.find().sort({
     createdAt: 'desc'
   })
-  res.render('articles/main', { articles: articles });
+  res.render('articles/index', { articles: articles });
 }
 
 
