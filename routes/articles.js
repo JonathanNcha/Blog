@@ -83,30 +83,6 @@ router.get('/register', isLoggedIn,(req, res) => {
   res.render('articles/register');
 });
 
-
-// router.post('/register', async (req, res) => {
-//   const plaintextPassword = req.body.password
-//   try {
-
-//     // const hashedPassword = await bcrypt.hash(req.body.password, 10);
-//     bcrypt.hash(plaintextPassword, 9, async function (err, hash) {
-
-
-//       let user = new User({
-//         id: Date.now().toString(),
-//         name: req.body.name,
-//         username: req.body.username,
-//         password: hash
-//       })
-//       user = await user.save();
-//     })
-//     res.redirect('articles/login');
-//   } catch {
-//     res.redirect('articles/register')
-//   }
-//   console.log(user);
-// });
-
 router.post('/', async (req, res, next) => {
   req.user = new User()
   next()
@@ -169,6 +145,7 @@ function saveArticleAndRedirect(path) {
     article.title = req.body.title
     article.description = req.body.description
     article.markdown = req.body.markdown
+    article.image = req.body.image
     try {
       article = await article.save()
       res.redirect(`/articles/${article.slug}`)
