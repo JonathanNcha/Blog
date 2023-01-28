@@ -38,6 +38,9 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    readtime: {
+        type: String
+    }
      
 })
 

@@ -21,12 +21,10 @@
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
     media="screen">
-
 </head>
 
 <body class="main-layout">
   <header>
-    <!-- header inner -->
     <div class="head__top">
       <div class="header">
         <div class="container-fluid">
@@ -59,7 +57,6 @@
               </nav>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -75,15 +72,9 @@
       </div>
       <div class="post_box padding_bottom1">
         <div width="70" height="50" class="mt-2 mb-3"><%- article.image %></div>
-
-
-
-        <!-- <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a> -->
-
         <div>
           <%- article.sanitizedHtml %>
         </div>
-
         <a href="/" class="btn btn-secondary mt-5">View All Articles</a>
       </div>
     </div>
@@ -104,8 +95,7 @@
     </div>
   </footer>
 
+  <script src="/js/words.js"></script>
 </body>
-
-
 
 </html>

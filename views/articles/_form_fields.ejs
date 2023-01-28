@@ -11,6 +11,10 @@
     <textarea required name="markdown" id="markdown" class="form-control"><%= article.markdown %></textarea>
 </div>
 <div class="form-group">
+    <label for="readtime">Read Time</label>
+    <input value="<%= article.readtime %>" name="readtime" id="readtime" class="form-control">  
+</div>
+<div class="form-group">
     <label for="image">Image</label>
     <input required value ="<%= article.image %>" type="text" id="image" name="image" class="form-control">
 </div>

@@ -113,7 +113,8 @@ router.post('/', async (req, res) => {
     title: req.body.title,
     description: req.body.description,
     markdown: req.body.markdown,
-    image: req.body.image
+    image: req.body.image,
+    readtime: req.body.readtime
   })
   try {
     article = await article.save()
@@ -146,6 +147,7 @@ function saveArticleAndRedirect(path) {
     article.description = req.body.description
     article.markdown = req.body.markdown
     article.image = req.body.image
+    article.readtime = req.body.readtime
     try {
       article = await article.save()
       res.redirect(`/articles/${article.slug}`)
@@ -169,5 +171,7 @@ function saveUserAndRedirect(path) {
     }
   }
 }
+
+
 
 module.exports = router

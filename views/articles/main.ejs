@@ -22,17 +22,12 @@
       media="screen">
 
 </head>
-<!-- body -->
 
 <body class="main-layout">
-   <!-- loader  -->
    <div class="loader_bg">
       <div class="loader"><img src="/images/loading.gif" alt="#" /></div>
    </div>
-   <!-- end loader -->
-   <!-- header -->
    <header>
-      <!-- header inner -->
       <div class="head_top">
          <div class="header">
             <div class="container-fluid">
@@ -68,9 +63,6 @@
                </div>
             </div>
          </div>
-         <!-- end header inner -->
-         <!-- end header -->
-         <!-- banner -->
          <section class="banner_main">
             <div class="container">
                <div class="row d_flex">
@@ -87,8 +79,7 @@
          </section>
       </div>
    </header>
-   <!-- end banner -->
-   <!-- blog_main -->
+
    <div class="blog_main">
       <div class="container">
          <div class="row">
@@ -99,9 +90,6 @@
                </div>
             </div>
          </div>
-
-
-         <!-- fist section -->
          <% articles.forEach(article => { %>
          <div class="row">
             <div class="col-md-12">
@@ -119,32 +107,24 @@
                            <a href="/articles/<%= article.slug %>">
                               <h3 class="awesome pa_wi"><%= article.title %></h3>
                               <div class="card-subtitle text-muted mb-2">
-                                 <%= article.createdAt.toLocaleDateString() %>
+                                 <%= article.createdAt.toLocaleDateString() %> | <%= article.readtime %>
                               </div>
+
                               <p><%= article.description %></p>
                            </a>
                            <div class="post_box padding_bottom1">
                               <h4 class="flot_left1">Post By : Jonathan Ncha </h4>
                            </div>
                         </div>
-
                      </div>
-
                   </div>
                </div>
             </div>
          </div>
          <% }) %>
-         <!-- end of fist section -->
-
-
       </div>
    </div>
-   <!-- end blog_main -->
-   
-   <!-- start of footer -->
    <div class="section">
-
       <div id="" class="Testimonial">
          <div class="container">
             <div class="row">
@@ -179,7 +159,7 @@
          </div>
       </div>
    </div>
-   <!--  footer -->
+
    <footer>
       <div class="footer mt-5 mt-5">
          <div class="copyright">
@@ -201,6 +181,7 @@
    <script src="/js/bootstrap.bundle.min.js"></script>
    <script src="/js/jquery-3.0.0.min.js"></script>
    <script src="/js/custom.js"></script>
+   <script src="/js/words.js"></script>
 </body>
 
 </html>
