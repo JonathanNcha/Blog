@@ -176,6 +176,8 @@
         text-align: center !important;
         padding-bottom: 6px;
         float: left;
+        z-index: 999999999999999999999999;
+        position: relative;
     }
 
     .text-bg h1 {
@@ -285,6 +287,7 @@
         padding: 0;
         width: 100%;
         margin-top: -55px;
+        
     }
 
     .navigation .navbar-collapse {
@@ -300,6 +303,7 @@
     .navigation.navbar-dark .navbar-nav .nav-link {
         padding: 10px 0;
         color: #000;
+        
     }
 
     .navigation.navbar-dark .navbar-toggler {
@@ -308,6 +312,7 @@
         border: inherit;
     }
 
+    
     .testimonial_box {
         padding: 0px 19px 40px 20px;
     }
@@ -315,5 +320,7 @@
     .navigation.navbar-dark .navbar-toggler-icon {
         background: url(../images/menu_icon.png);
         background-repeat: no-repeat;
+        
+         
     }
 }

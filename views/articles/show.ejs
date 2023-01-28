@@ -9,7 +9,6 @@
 
   <title><%= article.title %></title>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-
   <meta name="keywords" content="Blog, Lifestyle Blog, Travel, Ncha">
   <meta name="description" content="Blog">
   <meta name="author" content="Jonathan Ncha">
@@ -24,6 +23,9 @@
 </head>
 
 <body class="main-layout">
+  <div class="loader_bg">
+    <div class="loader"><img src="/images/loading.gif" alt="#" /></div>
+  </div>
   <header>
     <div class="head__top">
       <div class="header">
@@ -39,7 +41,7 @@
               </div>
             </div>
             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-              <nav class="navigation navbar navbar-expand-md navbar-dark cusnav2 ">
+              <nav class="navigation navbar navbar-expand-md navbar-dark cusnav">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
                   aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -47,10 +49,10 @@
                 <div class="collapse navbar-collapse" id="navbarsExample04">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="/"> Home </a>
+                      <a class="nav-link" href="#"> Home </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link " href="/articles/contact">Contact</a>
+                      <a class="nav-link" href="articles/contact">Contact</a>
                     </li>
                   </ul>
                 </div>
@@ -95,7 +97,12 @@
     </div>
   </footer>
 
-  <script src="/js/words.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/jquery-3.0.0.min.js"></script>
+  <script src="/js/custom.js"></script>
+
 </body>
 
 </html>
