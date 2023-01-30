@@ -107,7 +107,7 @@
                            <a href="/articles/<%= article.slug %>">
                               <h3 class="awesome pa_wi"><%= article.title %></h3>
                               <div class="card-subtitle text-muted mb-2">
-                                 <%= article.createdAt.toLocaleDateString() %> | <%= article.readtime %>
+                                 <%= article.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %> | <%= article.readtime %>
                               </div>
 
                               <p><%= article.description %></p>
