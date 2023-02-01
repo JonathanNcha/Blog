@@ -75,10 +75,8 @@
     <h3 class="awesome pa_wi mt-3"><%= article.title %></h3>
     <div>
       <div style="display: inline-flex; " class="awesome2 pa_wi">
-        <h3 class="text-muted">Jonathan Ncha | %></h3>
-        <p class="text-muted">
-          <%= article.createdAt.toLocaleDateString() %>
-        </p>
+        <h3 class="text-muted">Jonathan Ncha %> |
+          <%= article.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %></h3>
       </div>
       <div class="post_box padding_bottom1">
         <div width="70" height="50" class="mt-2 mb-3"><%- article.image %></div>

@@ -79,14 +79,10 @@ router.get('/login', isLoggedOut,(req, res) => {
 });
 
 
-router.get('/register', isLoggedIn,(req, res) => {
-  res.render('articles/register');
-});
-
-router.post('/', async (req, res, next) => {
-  req.user = new User()
-  next()
-}, saveUserAndRedirect('login'));
+// router.post('/', async (req, res, next) => {
+//   req.user = new User()
+//   next()
+// }, saveUserAndRedirect('login'));
 
 router.get('/index', isLoggedIn, async (req, res) => {
   const articles = await Article.find().sort({
@@ -157,20 +153,20 @@ function saveArticleAndRedirect(path) {
   }
 }
 
-function saveUserAndRedirect(path) {
-  return async (req, res) => {
-    let user = req.user
-    user.name = req.body.name
-    user.username = req.body.username
-    user.password = req.body.password
-    try {
-      user = await user.save()
-      res.redirect('/articles/login')
-    } catch (e) {
-      res.render('articles/register', { article: article })
-    }
-  }
-}
+// function saveUserAndRedirect(path) {
+//   return async (req, res) => {
+//     let user = req.user
+//     user.name = req.body.name
+//     user.username = req.body.username
+//     user.password = req.body.password
+//     try {
+//       user = await user.save()
+//       res.redirect('/articles/login')
+//     } catch (e) {
+//       res.render('articles/register', { article: article })
+//     }
+//   }
+// }
 
 
 
