@@ -57,14 +57,8 @@ passport.use(new localStrategy(function (username, password, done) {
     });
 }));
 
-// function isLoggedIn(req,res,next) {
-//     if(req.isAuthenticated()) return next();
-//     res.redirect('/')
-// }
-
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/articles/index',
-    // failureRedirect: '/articles/login?error=true'
     failureRedirect: '/'
 }));
 
@@ -73,11 +67,6 @@ app.get('/', async (req, res) => {
     res.render('articles/main', { articles: articles })
 })
 
-// app.get('/logout', function (req, res) {
-//     req.logout();
-//     res.redirect('/');
-
-// })
 
 app.get('/logout', function (req, res) {
     req.logout(function (err) {
@@ -86,10 +75,6 @@ app.get('/logout', function (req, res) {
     });
 });
 
-// app.delete('/logout', (req, res) => {
-//     req.logOut()
-//     res.redirect('/')
-// })
 
 app.use('/articles', articleRouter);
 app.use('/register', userRouter);
