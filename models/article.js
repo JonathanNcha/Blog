@@ -40,7 +40,16 @@ const articleSchema = new mongoose.Schema({
     },
     readtime: {
         type: String
-    }
+    },
+    // author: {
+    //     type: String
+    // },
+    // email: {
+    //     type: String,
+    // },
+    // comment: {
+    //     type: String,
+    // },
      
 })
 

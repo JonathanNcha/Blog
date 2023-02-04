@@ -1,0 +1,37 @@
+@media(min-width:568px){
+    .end{
+        margin-left: auto;
+    }
+    .commentshow {
+        width: 85%;
+    }
+    .commentform {
+        width: 50%;
+    }
+}
+
+@media(max-width:768px){
+    #post{
+        width: 100%;
+    }
+    .commentshow {
+        width: 100%;
+    }
+
+    
+    
+}
+
+
+
+.form-group input,.form-group textarea{
+
+    border-radius: 12px;
+}
+
+form{
+    border: 1px solid rgb(0, 0, 0);
+    /* background-color: rgba(16, 46, 46, 0.973); */
+    border-radius: 5px;
+    padding: 20px;
+ }

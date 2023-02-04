@@ -4,6 +4,8 @@ const article = require('./../models/article');
 const Article = require('./../models/article')
 const user = require('./../models/user');
 const User = require('./../models/user')
+const comment = require('./../models/comment');
+const Comment = require('./../models/comment')
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const passport = require('passport')
@@ -20,26 +22,26 @@ router.use(session({
 router.use(passport.initialize());
 router.use(passport.session());
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
 passport.use(new localStrategy(function (username, password, done) {
-User.findOne({ username: username }, async function (err, user) {
-  if (err) return done(err);
-  if (!user) return done(null, false, { message: 'Incorrect username.' });
+  User.findOne({ username: username }, async function (err, user) {
+    if (err) return done(err);
+    if (!user) return done(null, false, { message: 'Incorrect username.' });
 
-      
-  if (await bcrypt.compare(password, user.password)) {
-          return done(null, user)
-        } else {
-          return done(null, false, { message: 'Password incorrect' })
-        }
-});
+
+    if (await bcrypt.compare(password, user.password)) {
+      return done(null, user)
+    } else {
+      return done(null, false, { message: 'Password incorrect' })
+    }
+  });
 }));
 
 router.get('/', async (req, res) => {
@@ -47,16 +49,16 @@ router.get('/', async (req, res) => {
   res.render('articles/main', { articles: articles })
 })
 
-async function isLoggedIn(req,res,next) {
-  if(req.isAuthenticated()) return next();
+async function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
   const articles = await Article.find().sort({
     createdAt: 'desc'
   })
   res.render('articles/main', { articles: articles });
 }
 
-async function isLoggedOut(req,res,next) {
-  if(!req.isAuthenticated()) return next();
+async function isLoggedOut(req, res, next) {
+  if (!req.isAuthenticated()) return next();
   const articles = await Article.find().sort({
     createdAt: 'desc'
   })
@@ -66,7 +68,7 @@ async function isLoggedOut(req,res,next) {
 
 
 
-router.get('/new', isLoggedIn,(req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
   res.render('articles/new', { article: new Article() });
 });
 
@@ -74,15 +76,10 @@ router.get('/contact', (req, res) => {
   res.render('articles/contact', { article: article });
 });
 
-router.get('/login', isLoggedOut,(req, res) => {
+router.get('/login', isLoggedOut, (req, res) => {
   res.render('articles/login');
 });
 
-
-// router.post('/', async (req, res, next) => {
-//   req.user = new User()
-//   next()
-// }, saveUserAndRedirect('login'));
 
 router.get('/index', isLoggedIn, async (req, res) => {
   const articles = await Article.find().sort({
@@ -91,18 +88,47 @@ router.get('/index', isLoggedIn, async (req, res) => {
   res.render('articles/index', { articles: articles });
 });
 
-
 router.get('/edit/:id', async (req, res) => {
   const article = await Article.findById(req.params.id)
   res.render('articles/edit', { article: article })
 })
 
+
+router.post("/comments/:id", async (req, res) => {
+  const article = await Article.findById(req.params.id);
+  if (!article) return res.status(404).send('Article not found');
+
+  let comment = new Comment({
+    name: req.body.name,
+    email: req.body.email,
+    comment: req.body.comment,
+    slug: article.slug
+  })
+  try {
+    comment = await comment.save()
+    let comments = await Comment.find({ slug: req.params.slug }).sort({ createdAt: 'desc' })
+    res.redirect(`/articles/${article.slug}`)
+  } catch (e) {
+    console.log(e)
+    res.render('/', { article: article })
+  }
+});
+
+// router.get(['/:slug','/:id'], async (req, res) => {
+
 router.get('/:slug', async (req, res) => {
   const article = await Article.findOne({ slug: req.params.slug })
-  if (article == null) res.redirect('/')
-  res.render('articles/show', { article: article })
-
+  let comments = await Comment.find({ slug: req.params.slug }).sort({ createdAt: 'desc' })
+  try {
+    if (article == null) res.redirect('/')
+    res.render('articles/show', { article: article, comments: comments })
+  } catch (e) {
+    console.log(e)
+    res.render('articles/show', { article: article, comments: comments })
+  }
+  
 })
+
 
 router.post('/', async (req, res) => {
   let article = new Article({
@@ -152,22 +178,6 @@ function saveArticleAndRedirect(path) {
     }
   }
 }
-
-// function saveUserAndRedirect(path) {
-//   return async (req, res) => {
-//     let user = req.user
-//     user.name = req.body.name
-//     user.username = req.body.username
-//     user.password = req.body.password
-//     try {
-//       user = await user.save()
-//       res.redirect('/articles/login')
-//     } catch (e) {
-//       res.render('articles/register', { article: article })
-//     }
-//   }
-// }
-
 
 
 module.exports = router

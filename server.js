@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const Article = require('./models/article');
 const article = require('./models/article');
 const User = require('./models/user');
-const user = require('./models/user');
+const user = require('./models/user'); 
+const comment = require('./models/comment');
+const Comment = require('./models/comment')
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
@@ -11,6 +13,7 @@ const bcrypt = require('bcrypt');
 const localStrategy = require('passport-local').Strategy;
 const articleRouter = require('./routes/articles');
 const userRouter = require('./routes/articles');
+const commentRouter = require('./routes/articles');
 const methodOverride = require('method-override');
 const app = express();
 
@@ -62,10 +65,13 @@ app.post('/login', passport.authenticate('local', {
     failureRedirect: '/'
 }));
 
+
+
 app.get('/', async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' })
     res.render('articles/main', { articles: articles })
 })
+
 
 
 app.get('/logout', function (req, res) {
@@ -78,4 +84,5 @@ app.get('/logout', function (req, res) {
 
 app.use('/articles', articleRouter);
 app.use('/register', userRouter);
+app.use('/comments', commentRouter);
 app.listen(8080);
