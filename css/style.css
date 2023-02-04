@@ -388,7 +388,7 @@ button {
 .awesome {padding-bottom:20px; font-size: 44px; line-height: 38px; color:#333334; } 
 .awesome2 {font-size: 25px;color:#333334; } 
 .our_text_box p {padding-bottom: 50px; color: #3c3c3c; display: inline-block; } 
-.flot_left1 {float: left; padding: 0;} 
+.flot_left1 {float: left; padding-top: 4px;} 
 ul.like {float: right;}
 ul.like li {display: inline-block;}
 ul.like li a {display: inline-block; color: #3c3c3c;}
