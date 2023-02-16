@@ -93,7 +93,7 @@
             <%  comments.forEach(comment => { %>
             <div class="mt-4 text-justify float-left commentshow">
               <h4 style="padding: 2px;"><%= comment.name %> |
-                <%= comment.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>
+                <%= comment.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric'}) %>
               </h4>
               <br>
               <p><%= comment.comment %></p>
