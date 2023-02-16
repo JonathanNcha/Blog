@@ -75,7 +75,7 @@
     <div>
       <div style="display: inline-flex; " class="awesome2 pa_wi">
         <h3 class="text-muted">Jonathan Ncha %> |
-          <%= article.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %></h3>
+          <%= article.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric'}) %></h3>
       </div>
       <div class="post_box padding_bottom1">
         <div width="70" height="50" class="mt-2 mb-3"><%- article.image %></div>
@@ -93,7 +93,7 @@
             <%  comments.forEach(comment => { %>
             <div class="mt-4 text-justify float-left commentshow">
               <h4 style="padding: 2px;"><%= comment.name %> |
-                <%= comment.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric'}) %>
+                <%= comment.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>
               </h4>
               <br>
               <p><%= comment.comment %></p>
