@@ -5,8 +5,11 @@
     .commentshow {
         width: 85%;
     }
-    .commentform {
-        width: 50%;
+    /* .commentform {
+        width: 100%;
+    } */
+    .show_con{
+        width: 65%;
     }
 }
 
@@ -17,6 +20,9 @@
     .commentshow {
         width: 100%;
     }
+    /* .show_con{
+        width: 100%;
+    } */
 
     
     
