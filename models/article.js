@@ -21,7 +21,7 @@ const articleSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    markdown:{
+    markdown: {
         type: String,
         required: true
     },
@@ -41,20 +41,10 @@ const articleSchema = new mongoose.Schema({
     readtime: {
         type: String
     },
-    // author: {
-    //     type: String
-    // },
-    // email: {
-    //     type: String,
-    // },
-    // comment: {
-    //     type: String,
-    // },
-     
 })
 
-articleSchema.pre('validate', function(next) {
-    if (this.title){
+articleSchema.pre('validate', function (next) {
+    if (this.title) {
         this.slug = slugify(this.title, {
             lower: true,
             strict: true
@@ -69,4 +59,4 @@ articleSchema.pre('validate', function(next) {
 
 })
 
-module.exports = mongoose.model('Article',articleSchema);
+module.exports = mongoose.model('Article', articleSchema);

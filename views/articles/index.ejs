@@ -71,43 +71,47 @@
         </div>
       </div>
 
-      <% articles.forEach(article => { %>
+      <% articles.forEach(article=> { %>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="our_two_box">
-            <div class="row d_flex">
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                <div class="our_img">
-                  <figure><%- article.image %></figure>
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                <div class="our_text_box">
-                  <h3 class="awesome pa_wi"><%= article.title %></h3>
-                  <div class="card-subtitle text-muted mb-2">
-                    <%= article.createdAt.toLocaleDateString()%> | <%= article.readtime %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="our_two_box">
+              <div class="row d_flex">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                  <div class="our_img">
+                    <figure><%- article.image %></figure>
                   </div>
-                  <p><%= article.description %></p>
-                  <div class="post_box padding_bottom1">
-                    <ul class="like mb-2 ">
-                      <li><a href="/articles/<%= article.slug %>" class="btn btn-primary">Read More</a></li>
-                      <li><a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a></li>
-                      <li>
-                        <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
-                          <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                      </li>
-                    </ul>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                  <div class="our_text_box">
+                    <h3 class="awesome pa_wi">
+                      <%= article.title %>
+                    </h3>
+                    <div class="card-subtitle text-muted mb-2">
+                      <%= article.createdAt.toLocaleDateString()%> | <%= article.readtime %>
+                    </div>
+                    <p>
+                      <%= article.description %>
+                    </p>
+                    <div class="post_box padding_bottom1">
+                      <ul class="like mb-2 ">
+                        <li><a href="/articles/<%= article.slug %>" class="btn btn-primary">Read More</a></li>
+                        <li><a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a></li>
+                        <li>
+                          <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <% }) %>
-      <a href="/articles/new" class="btn btn-large btn-block btn-success mb-5">New Article</a>
+        <% }) %>
+          <a href="/articles/new" class="btn btn-large btn-block btn-success mb-5">New Article</a>
     </div>
   </div>
   </div>

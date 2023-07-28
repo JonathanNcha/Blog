@@ -17,7 +17,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
-  <title><%= article.title %></title>
+  <title>
+    <%= article.title %>
+  </title>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <meta name="keywords" content="Blog, Lifestyle Blog, Travel, Ncha">
   <meta name="description" content="Blog">
@@ -71,11 +73,14 @@
     </div>
   </header>
   <div class="container show_con">
-    <h3 class="awesome pa_wi mt-3"><%= article.title %></h3>
+    <h3 class="awesome pa_wi mt-3">
+      <%= article.title %>
+    </h3>
     <div>
       <div style="display: inline-flex; " class="awesome2 pa_wi">
         <h3 class="text-muted">Jonathan Ncha %> |
-          <%= article.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric'}) %></h3>
+          <%= article.createdAt.toLocaleDateString("en-US", { year: 'numeric' , month: 'long' , day: 'numeric' }) %>
+        </h3>
       </div>
       <div class="post_box padding_bottom1">
         <div width="70" height="50" class="mt-2 mb-3"><%- article.image %></div>
@@ -86,20 +91,24 @@
       </div>
 
 
-      <div class="container mt-5" id="post-comment" >
+      <div class="container mt-5" id="post-comment">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-12 pb-4">
-            <h3 class="awesome pa_wi mt-3" >Comments</h3>
-            <%  comments.forEach(comment => { %>
-            <div class="mt-4 text-justify float-left commentshow">
-              <h4 style="padding: 2px;"><%= comment.name %> |
-                <%= comment.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>
-              </h4>
-              <br>
-              <p><%= comment.comment %></p>
-              <hr>
-            </div>
-            <% }); %>
+            <h3 class="awesome pa_wi mt-3">Comments</h3>
+            <% comments.forEach(comment=> { %>
+              <div class="mt-4 text-justify float-left commentshow">
+                <h4 style="padding: 2px;">
+                  <%= comment.name %> |
+                    <%= comment.createdAt.toLocaleDateString("en-US", { year: 'numeric' , month: 'long' , day: 'numeric'
+                      , hour: 'numeric' , minute: 'numeric' }) %>
+                </h4>
+                <br>
+                <p>
+                  <%= comment.comment %>
+                </p>
+                <hr>
+              </div>
+              <% }); %>
           </div>
           <div class="col-sm-12 col-md-12 col-12">
             <form action="/articles/comments/<%= article.id %>" method="post" id="algin-form" class="commentform">

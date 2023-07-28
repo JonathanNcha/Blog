@@ -1,4 +1,3 @@
-// const { application } = require('express');
 const express = require('express');
 const article = require('./../models/article');
 const Article = require('./../models/article')
@@ -65,9 +64,6 @@ async function isLoggedOut(req, res, next) {
   res.render('articles/index', { articles: articles });
 }
 
-
-
-
 router.get('/new', isLoggedIn, (req, res) => {
   res.render('articles/new', { article: new Article() });
 });
@@ -80,7 +76,6 @@ router.get('/login', isLoggedOut, (req, res) => {
   res.render('articles/login');
 });
 
-
 router.get('/index', isLoggedIn, async (req, res) => {
   const articles = await Article.find().sort({
     createdAt: 'desc'
@@ -92,7 +87,6 @@ router.get('/edit/:id', async (req, res) => {
   const article = await Article.findById(req.params.id)
   res.render('articles/edit', { article: article })
 })
-
 
 router.post("/comments/:id", async (req, res) => {
   const article = await Article.findById(req.params.id);
@@ -114,7 +108,6 @@ router.post("/comments/:id", async (req, res) => {
   }
 });
 
-
 router.get('/:slug', async (req, res) => {
   const article = await Article.findOne({ slug: req.params.slug })
   let comments = await Comment.find({ slug: req.params.slug }).sort({ createdAt: 'desc' })
@@ -125,9 +118,7 @@ router.get('/:slug', async (req, res) => {
     console.log(e)
     res.render('articles/show', { article: article, comments: comments })
   }
-  
 })
-
 
 router.post('/', async (req, res) => {
   let article = new Article({
@@ -177,6 +168,5 @@ function saveArticleAndRedirect(path) {
     }
   }
 }
-
 
 module.exports = router

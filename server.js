@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Article = require('./models/article');
 const article = require('./models/article');
 const User = require('./models/user');
-const user = require('./models/user'); 
+const user = require('./models/user');
 const comment = require('./models/comment');
 const Comment = require('./models/comment')
 const session = require('express-session');
@@ -23,15 +23,14 @@ mongoose.set("strictQuery", false);
 mongoose.connect(url).then(() => console.log('connected to MongoDB'))
     .catch(e => console.log(e));
 
-// const User = mongoose.model('User', userSchema);
-
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(session({
     secret: 'djfshvu43t623gf27tg8',
     resave: false,
     saveUninitialized: true
-}))
+}));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'))
 app.use(express.static(__dirname));
@@ -65,14 +64,10 @@ app.post('/login', passport.authenticate('local', {
     failureRedirect: '/'
 }));
 
-
-
 app.get('/', async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' })
     res.render('articles/main', { articles: articles })
 })
-
-
 
 app.get('/logout', function (req, res) {
     req.logout(function (err) {
@@ -80,7 +75,6 @@ app.get('/logout', function (req, res) {
         res.redirect('/');
     });
 });
-
 
 app.use('/articles', articleRouter);
 app.use('/register', userRouter);

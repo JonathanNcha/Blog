@@ -6,12 +6,11 @@ const { JSDOM } = require('jsdom');
 const { hash } = require('bcrypt');
 const dompurify = createDomPurify(new JSDOM().window);
 
-
 const commentSchema = new mongoose.Schema({
     // articleId: {
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'Article',
-        
+
     // },
     slug: {
         type: mongoose.Schema.Types.String,
