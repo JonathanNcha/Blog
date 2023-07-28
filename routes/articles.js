@@ -114,7 +114,6 @@ router.post("/comments/:id", async (req, res) => {
   }
 });
 
-// router.get(['/:slug','/:id'], async (req, res) => {
 
 router.get('/:slug', async (req, res) => {
   const article = await Article.findOne({ slug: req.params.slug })
