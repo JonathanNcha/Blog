@@ -17,7 +17,10 @@ const commentRouter = require('./routes/articles');
 const methodOverride = require('method-override');
 const app = express();
 
-const url = 'mongodb+srv://root:root@cluster0.r1dqxng.mongodb.net/?retryWrites=true&w=majority';
+const dotenv = require('dotenv').config();
+console.log(`Your port is ${process.env.PORT}`);
+
+const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.r1dqxng.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.set("strictQuery", false);
 mongoose.connect(url).then(() => console.log('connected to MongoDB'))
@@ -26,7 +29,7 @@ mongoose.connect(url).then(() => console.log('connected to MongoDB'))
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(session({
-    secret: 'djfshvu43t623gf27tg8',
+    secret: `process.env.SECRET`,
     resave: false,
     saveUninitialized: true
 }));
@@ -79,4 +82,4 @@ app.get('/logout', function (req, res) {
 app.use('/articles', articleRouter);
 app.use('/register', userRouter);
 app.use('/comments', commentRouter);
-app.listen(8080);
+app.listen(process.env.PORT);
